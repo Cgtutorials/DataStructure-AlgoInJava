@@ -18,7 +18,7 @@ public class InversionCount {
 
     private static int countInversionsUtil(int[] arr, int[] temp, int start, int end) {
         int inversionCount = 0;
-        
+
         if (start < end) {
             int mid = (start + end) / 2;
             inversionCount = countInversionsUtil(arr, temp, start, mid);
