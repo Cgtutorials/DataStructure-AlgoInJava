@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DS &amp; Algo/DS &amp; Algo.iml" filepath="$PROJECT_DIR$/DS &amp; Algo/DS &amp; Algo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure-AlgoInJava.iml" filepath="$PROJECT_DIR$/DataStructure-AlgoInJava.iml" />
+    </modules>
+  </component>
+</project>
