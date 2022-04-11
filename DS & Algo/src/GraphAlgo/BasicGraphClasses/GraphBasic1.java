@@ -1,5 +1,7 @@
 package GraphAlgo.BasicGraphClasses;
 
+import java.util.LinkedList;
+
 public class GraphBasic1 {
     public int vertices;
     public DoublyLinkedList<Integer> adjacencyList[];
@@ -20,7 +22,9 @@ public class GraphBasic1 {
             this.adjacencyList[source].insertAtEnd(dest);
         }
     }
-
+    public DoublyLinkedList< Integer >[] getAdj() {
+        return this.adjacencyList;
+    }
     public void printGraph()
     {
         System.out.println(">>Adjacency List of Directed Graph<<");
