@@ -6,51 +6,47 @@ import GraphAlgo.BasicGraphClasses.GraphBasic1;
 import java.util.Stack;
 
 public class CheckDFSGraph {
-    public static String dfs(GraphBasic1 g) {
-        StringBuilder sb= new StringBuilder();
-        int v= g.vertices;
+
+    public static String dfs(GraphBasic1 g){
+        String result="";
         if(g.vertices<1){
             return "";
         }
+
         boolean[] visited= new boolean[g.vertices];
 
-        for(int i=0;i<v;i++){
+        for(int i=0;i<g.vertices;i++){
             if(!visited[i]){
-                String s= dfsHelper(i,g,visited);
-                sb.append(s);
+                result += dfsHelper(g,i,visited);
             }
         }
 
-       return  sb.toString();
+        return result;
     }
 
-    private static String dfsHelper(int i, GraphBasic1 g, boolean[] visited) {
+    private static String dfsHelper(GraphBasic1 g, int currentVertex, boolean[] visited) {
+        String result="";
+        Stack<Integer> stack= new Stack<>();
+        stack.push(currentVertex);
 
-        Stack<Integer> s1= new Stack<>();
-        StringBuilder sb= new StringBuilder();
-        s1.push(i);
-
-        while (!s1.isEmpty()){
-            int current_node= s1.pop();
-            sb.append(current_node);
+        while(!stack.isEmpty()){
+            int current_node= stack.pop();
+            result+= String.valueOf(current_node);
 
             DoublyLinkedList<Integer>.Node temp=null;
-            if(g.adjacencyList[current_node]!=null){
-                temp= g.adjacencyList[current_node].headNode;
-            }
-            while(temp!=null){
+            if(g.adjacencyList[current_node]!=null)
+                temp=g.adjacencyList[current_node].headNode;
+
+            while (temp!=null){
                 if(!visited[temp.data]){
-                    s1.push(temp.data);
+                    stack.push(temp.data);
                 }
                 temp=temp.nextNode;
             }
 
-            //Only Change Here is this
             visited[current_node]=true;
-
         }
-
-            return sb.toString();
+        return result;
     }
 
     public static void main(String[] args) {

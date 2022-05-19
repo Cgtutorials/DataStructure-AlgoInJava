@@ -7,50 +7,56 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class CheckBFSGraph {
-    public static String bfs(GraphBasic1 g) {
-        int v= g.vertices;
-        String result = "";
+
+    private static String bfs(GraphBasic1 g) {
+        String result="";
 
         if(g.vertices<1){
-            System.out.println(result);
             return result;
         }
+
+        //Array to hold ,kon kon se node hain wo visit kar chuke
         boolean[] visited= new boolean[g.vertices];
-        for(int i=0;i< g.vertices;i++){
-            if(!visited[i])
-                result=result+ bfsHelper(g,i,visited);
+
+        for(int i=0;i<g.vertices;i++){
+            if(!visited[i]){
+                result = result + bfsRecursive(g,i,visited);
+            }
         }
+
         return result;
     }
 
-    private static String bfsHelper(GraphBasic1 g, int i, boolean[] visited) {
-        String result = "";
-        Queue<Integer> q1= new LinkedList<>();
-        q1.add(i);
-        visited[i]=true;
-        while (!q1.isEmpty()){
-            int curr_node= q1.poll();
+    private static String bfsRecursive(GraphBasic1 g, int src, boolean[] visited) {
+        String result="";
+        Queue<Integer> queue= new LinkedList<>();
+        queue.add(src);
+        visited[src]=true;
 
-            result+= String.valueOf(curr_node);
+        while(!queue.isEmpty()){
+            int current_vertex= queue.poll();
+            result+= String.valueOf(current_vertex);
 
+            //Get adjacent vertices and agar wo adjacent wale visited nahi tab unko queue mey add karo
             DoublyLinkedList<Integer>.Node temp=null;
-            if(g.adjacencyList[curr_node]!=null){
-                temp=g.adjacencyList[curr_node].headNode;
-            }
-
-            while (temp!=null){
+            if(g.adjacencyList[current_vertex]!=null)
+                temp=g.adjacencyList[current_vertex].headNode;
+            while(temp!=null){
                 if(!visited[temp.data]){
-                    q1.add(temp.data);
+                    queue.add(temp.data);
                     visited[temp.data]=true;
                 }
-                temp=temp.nextNode;
+                temp= temp.nextNode;
             }
+
         }
 
         return result;
     }
 
     public static void main(String[] args) {
+
+
         GraphBasic1 g = new GraphBasic1(5);
         g.addEdge(0,1);
         g.addEdge(0,2);
@@ -70,4 +76,6 @@ public class CheckBFSGraph {
         g2.printGraph();
         System.out.println("BFS traversal of Graph2 : " + bfs(g2));
     }
+
+
 }

@@ -4,24 +4,23 @@ import java.util.LinkedList;
 
 public class GraphBasic1 {
     public int vertices;
-    public DoublyLinkedList<Integer> adjacencyList[];
+    public  DoublyLinkedList<Integer> adjacencyList[];
 
-    public GraphBasic1(int vertices){
-        this.vertices=vertices;
-        adjacencyList= new DoublyLinkedList[vertices];
+    public GraphBasic1(int vertices) {
+        this.vertices = vertices;
+        this.adjacencyList =  new DoublyLinkedList[vertices];
 
         for(int i=0;i<vertices;i++){
             adjacencyList[i]= new DoublyLinkedList<>();
         }
-
-
     }
 
-    public void addEdge(int source,int dest){
-        if(source<vertices && dest < vertices){
-            this.adjacencyList[source].insertAtEnd(dest);
+    public void addEdge(int source,int destination){
+        if(source <vertices && destination <vertices){
+            this.adjacencyList[source].insertAtTail(destination);
         }
     }
+
     public DoublyLinkedList< Integer >[] getAdj() {
         return this.adjacencyList;
     }
@@ -46,5 +45,6 @@ public class GraphBasic1 {
                 System.out.println("|" + i + "| => "+ "null");
             }
         }
-    }
+        }
+
 }
