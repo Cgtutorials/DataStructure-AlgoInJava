@@ -5,7 +5,7 @@ import GraphAlgo.BasicGraphClasses.GraphBasic1;
 
 public class CheckCycle {
 
-    private static boolean detectCycle(GraphBasic1 g2) {
+    public static boolean detectCycle(GraphBasic1 g2) {
         int vertices= g2.vertices;
 
         boolean[] visited= new boolean[vertices];
